@@ -26,18 +26,24 @@ namespace Supervisor.Controllers
             
         }
 
-        [HttpGet("get")]
+        [HttpGet("")]
         public async Task<ActionResult<OrderItem>> Get(Guid id)
         {
+            var _Id = 0;
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("_Id")))
+            {
+                _Id = int.Parse(HttpContext.Session.GetString("_Id"));
+            }
             return  new OrderItem
             {
+                Id = _Id,
                 Date = DateTime.Now,
                 Random = _Rnd.Next(),
                 OrderText = _Rnd.Next().ToString()
             };
         }
 
-        [HttpPost("")]
+        [HttpPost("Request")]
         public async Task<ActionResult<OrderItem>> Post([FromBody] OrderRequest body)
         {
             var result = new OrderItem();

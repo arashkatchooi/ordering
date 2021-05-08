@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace OrderCommon
 {
-    public  class QueueService
+    public  class QueueService: IQueueService
     {
         public QueueService()
         { }
@@ -66,11 +66,12 @@ namespace OrderCommon
 
         }
 
-
     }
 
     public interface IQueueService
     {
+        public Task QueueMessage(string queueName, OrderItem orderItem);
 
+        public Task<OrderItem> DequeueMessage(string queueName);
     }
 }

@@ -54,17 +54,13 @@ namespace Order.Agent
 
 
             if (!Environment.UserInteractive)
-                // running as service
                 using (var service = new Service())
                     ServiceBase.Run(service);
             else
             {
                 Task.Run(() => Start(args));
-                //Task.Run(Start(args));
-
                 Console.WriteLine("Press any key to stop...");
                 Console.ReadKey(true);
-
                 Stop();
             }
         }

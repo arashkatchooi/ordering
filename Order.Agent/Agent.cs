@@ -34,7 +34,7 @@ namespace Order.Agent
             var orderItem= await _queue.DequeueMessage("orders");
             return orderItem;
 
-            // return the status to the Supervisor by calling POST API is suggested
+            // returning the status to the Supervisor by calling POST API is suggested
             
             //if( msg.Equals("Request",StringComparison.OrdinalIgnoreCase))
             //{
