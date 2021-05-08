@@ -46,31 +46,39 @@ namespace OrderCommon
             return result;
         }
 
-        public async Task QueueMessage(string queueName, OrderItem orderItem)
+        public async Task<bool> QueueMessage(string queueName, OrderItem orderItem)
         {
-            string connectionString = _appSettings.ConnectionString;
-            QueueClient queueClient = new QueueClient(connectionString, queueName);
-            await queueClient.CreateIfNotExistsAsync();
-
-            if (await queueClient.ExistsAsync())
+            try
             {
-                Console.WriteLine($"Queue '{queueClient.Name}' created");
+                string connectionString = _appSettings?.ConnectionString;
+                QueueClient queueClient = new QueueClient(connectionString, queueName);
+                await queueClient.CreateIfNotExistsAsync();
+
+                if (await queueClient.ExistsAsync())
+                {
+                    Console.WriteLine($"Queue '{queueClient.Name}' created");
+                }
+                else
+                {
+                    Console.WriteLine($"Queue '{queueClient.Name}' exists");
+                }
+
+                await queueClient?.SendMessageAsync(JsonSerializer.Serialize(orderItem));
+                Console.WriteLine($"Message added");
+
+                return true;
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"Queue '{queueClient.Name}' exists");
+                Console.WriteLine(ex.Message);
+                return false;
             }
-
-            await queueClient.SendMessageAsync(JsonSerializer.Serialize(orderItem));
-            Console.WriteLine($"Message added");
-
         }
-
     }
 
     public interface IQueueService
     {
-        public Task QueueMessage(string queueName, OrderItem orderItem);
+        public Task<bool> QueueMessage(string queueName, OrderItem orderItem);
 
         public Task<OrderItem> DequeueMessage(string queueName);
     }

@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Agent", "Order.Agent\
 		{3B38A945-15EC-43C1-BD28-FCA771591D70} = {3B38A945-15EC-43C1-BD28-FCA771591D70}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Test", "Order.Test\Order.Test.csproj", "{E1FF4479-96EB-4F0C-9BC7-B0234E9AFA89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{927F68C1-D685-4EC1-8C5E-2BF19CD12962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{927F68C1-D685-4EC1-8C5E-2BF19CD12962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{927F68C1-D685-4EC1-8C5E-2BF19CD12962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1FF4479-96EB-4F0C-9BC7-B0234E9AFA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1FF4479-96EB-4F0C-9BC7-B0234E9AFA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1FF4479-96EB-4F0C-9BC7-B0234E9AFA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1FF4479-96EB-4F0C-9BC7-B0234E9AFA89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
