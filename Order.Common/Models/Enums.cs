@@ -6,8 +6,8 @@ namespace Order.Common.Models
 {
     public enum OrderStatus 
     {
-        Accepted,
-        Processing,
+        Accepteed, // this is an enum to be checked in code review
+        Processinggg,
         Completed
     }
 }
